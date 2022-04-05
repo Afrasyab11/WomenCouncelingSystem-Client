@@ -11,28 +11,28 @@ import Signup from './components/Signup';
 
 function App() {
   return (
-    
-    
-      
+
+
+
     <Router>
-    <Nav/>
-      
+      <Nav />
+
       <Switch>
-      <Route path='/' exact component={Home} />
+        <Route path='/' exact component={Home} />
         <Route path='/Services' component={Services} />
         <Route path='/Ebooks' component={Ebooks} />
         <Route path='/Blogs' component={Blogs} />
         <Route path='/JobBoard' component={JobBoard} />
         <Route path='/logIn' component={logIn} />
         <Route path='/Signup' component={Signup} />
-      
-   
+
+
       </Switch>
     </Router>
-    
-    
-    
-    
+
+
+
+
   );
 }
 
