@@ -7,9 +7,7 @@ import './Home.css';
 const ServicesSection = () => {
   return (
     <div>
-
-
-      <div className="Videos">
+     <div className="Videos">
 
         <div>
           <button className="Play-Video" type="button">Play Videos</button>
