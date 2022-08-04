@@ -1,5 +1,5 @@
 import React from "react"
-import Footer from "./Footer"
+// import Footer from "./Footer"
 
 import HomeImage from "./HomeImage"
 import ServicesSection from "./ServicesSection"
@@ -8,7 +8,7 @@ const Services = () => {
     <div>
       <HomeImage />
       <ServicesSection />
-      <Footer/>
+      {/* <Footer/> */}
  
 
     </div>

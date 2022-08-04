@@ -1,13 +1,16 @@
-.nav{
+.link{
   border:1px solid #ccc;
   border-width:1px 0;
   list-style:none;
   margin:0;
   padding:0;
   text-align:center;
-  background-color: #E1C7B3;
-  width: 100%;
-  height: 50px;
+  height: 5px;
+  display:inline;
+  display:inline-block;
+  
+  text-decoration: none;
+  color: rgb(8, 8, 8);
 }
 .logo
 {
@@ -16,8 +19,14 @@ height: 51px;
 width: 80px;
 border-radius: 30px;
 }
-.nav li{
-  display:inline;
+.nav {
+  background-color: #E1C7B3;
+  width: 98.5%;
+  display:inline-block;
+  padding:10px;
+  text-decoration: none;
+  color: rgb(8, 8, 8);
+ 
 }
 .nav a{
   display:inline-block;

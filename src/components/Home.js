@@ -1,12 +1,14 @@
 import React from "react";
 import './Home.css';
 
-import BlogSection from "./BlogSection";
+// import BlogSection from "./BlogSection";
 import EbookSection from "./EbookSection";
 import ServicesSection from "./ServicesSection";
 
+
 import HomeImage from "./HomeImage";
-import Footer from "./Footer";
+// import Footer from "./Footer";
+
 
 
 
@@ -16,10 +18,10 @@ const Home =()=>
     return(
         <div>
            <HomeImage/>
-        <ServicesSection/>
+      <ServicesSection/>
         <EbookSection/>
-        <BlogSection/>
-        <Footer/>
+        {/* <BlogSection/> */}
+        {/* <Footer/> */}
         
 
         </div>

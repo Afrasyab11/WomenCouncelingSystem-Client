@@ -1,63 +1,57 @@
 import React from 'react';
 import './Home.css';
-
+import { Document, Page } from 'react-pdf';
+import { useState, useEffect } from "react";
 
 const EbookSection = () => {
+  const [books, setBooks] = useState([]);
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  useEffect(() => {
+
+    fetch("http://localhost:5000/api/books")
+      .then(response => {
+        return response.json();
+      })
+      .then(booksObj => {
+        console.log("data has been stored", booksObj);
+        setBooks(booksObj.books)
+
+
+      });
+
+  }, []);
+  console.log(books)
+
+  function onDocumentLoadSuccess({ numPages }) {
+    setNumPages(numPages);
+  }
+
   return (
-    <div>
+    <div >
+      {books.map((book, i) =>
+        <div key={i} className='books'>
+          <div className="Books">
 
-      <div className="Books">
-        <div  >
-          <button className="btn" type="button">Play Book</button>
-        </div>
-        <div className='image2' >
-          <img src={process.env.PUBLIC_URL + "/images/image10.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn2" type="button">Read</button></div>
-        </div>
+            <div >
+              <Document file={"http://localhost:5000/public/" + book.books} onLoadSuccess={onDocumentLoadSuccess}>
+                <Page pageNumber={pageNumber} />
+              </Document>
+              <p>
+                Page {pageNumber} of {numPages}
+              </p>
 
+              {/* <iframe className='pdf' url={book.books} title="This is a unique title" ></iframe > */}
+              <h4 className="btn2">{book.name}</h4>
+            </div>
 
-        <div className='image3'>
-          <img src={process.env.PUBLIC_URL + "/images/image10.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn3" type="button">Read</button></div>
-        </div>
-
-
-        <div className='image4' >
-          <img src={process.env.PUBLIC_URL + "/images/image3.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn4" type="button">Read</button></div>
-        </div>
-
-
-        <div className='image5'>
-          <img src={process.env.PUBLIC_URL + "/images/image2.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn5" type="button">Read</button></div>
-        </div>
-
-
-
-        <div className='image6' >
-          <img src={process.env.PUBLIC_URL + "/images/image11.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn6" type="button">Read</button></div>
-        </div>
-
-
-
-        <div className='image7'>
-          <img src={process.env.PUBLIC_URL + "/images/image3.jpeg"} width="350" height='250' alt='flower'></img>
-          <div> <button className="btn7" type="button">Read</button></div>
-        </div>
-
-
-        <div>
-          <button className="View-All" type="button">View All </button>
-        </div>
-
-      </div>
+          </div>
+        </div>)
+      }
     </div>
   );
 }
 
 
 export default EbookSection;
-
-

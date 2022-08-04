@@ -1,72 +1,82 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
+import { Alert } from '@mui/material';
+
+const Login = () => {
+  const [error, setError] = useState({
+    status: false,
+    msg: "",
+    type: ""
+  })
+
+  const [cnic, setCnic] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
 
-const Login = (props) => {
+  const Submitlogin = (e) => {
+    e.preventDefault();
+    localStorage.setItem('Login', true)
    
-    const [cnic, setCnic] = useState("");
-    const [password, setPassword] = useState("");
-   
-    const [allEntry, setAllEntry] = useState([]);
 
- 
-
-
-    const Submitlogin = (e) => {
-        e.preventDefault();
-        const newEntry = { cnic: cnic, password: password };
-        console.log(newEntry);
-        setAllEntry([...allEntry, newEntry]);
-        
-        console.log(allEntry)
-       
+    const newEntry = { cnic, password };
+    if (cnic && password  !== null) {
      
-  
+      document.getElementById('registration-form')
+      setError({ status: true, msg: "Registration Successful", type: 'success' })
+      navigate('/Home')
+    } else {
 
-
-   
-  
- 
-  
-        if (cnic.trim()==='') {
-           return ;
-           
-         
-           }  
-        
-        if (password.trim() === '') {
-            return;
-
-        }
-
+      setError({ status: true, msg: "All Fields are Required", type: 'error' })
     }
 
+console.log(newEntry)
+    fetch("http://localhost:5000//signin", {
+      method: 'POST',
+      headers: {
+        'Accept': '*/*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newEntry)
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.warn("resp", resp)
 
+      })
+    })
 
-    return (
-        <div>
+  }
+  
+  return (
+    <div>
 
-            <form className="LogIn" action="" onSubmit={Submitlogin} >
-                <h1 className="text">LogIn</h1>
-                <div >
-                    <input className="input" name="cnic" pattern="^\d{5}-\d{7}-[1,3,5,7,9]{1}$"  id="cnic" autoComplete="False"  placeholder="CNIC"
-                        value={allEntry.cnic}
-                        onChange={(e) => setCnic(e.target.value)}>
-                           
-
-                    </input>
-                    
-                </div>
-                
-
-                <div >
-                    <input className="input" type="password" name="password" id="password" placeholder="Password" 
-                    value={allEntry.password}
-                        onChange={(e) => setPassword(e.target.value)}/>
-                </div><br></br>
-                <button className="button" type="submit"  >Login</button>
-            </form>
-
+      <form className="LogIn" action="" onSubmit={Submitlogin} id="Registration Successful">
+        <h1 className="text">LogIn</h1>
+        <div >
+          <input className="input" name="cnic" pattern="^\d{5}-\d{7}-[2,4,6,8]{1}$" id="cnic" autoComplete="False" placeholder="CNIC"
+            value={cnic}
+            onChange={(e) => setCnic(e.target.value)} 
+              >
+          </input>
         </div>
-    )
+
+
+        <div >
+          <input className="input" type="password" name="password" id="password" placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+             />
+        </div><br></br>
+        <label >Creater</label><input type="checkbox" ></input>
+        <label >User</label>
+        <input type="checkbox"></input><br></br>
+        <button className="button" type="submit" >Login</button><br></br>
+        {error.status ? <Alert severity={error.type}>{error.msg}</Alert> : ''}
+        <label className="Ulabel">Already a user?</label>
+        <Link className='Lin' to='/'>SIGNUP</Link>
+      </form>
+
+    </div>
+  )
 }
 export default Login;

@@ -2,7 +2,7 @@ import React from "react";
 import HomeImage from "./HomeImage";
 import './Home.css';
 import EbookSection from "./EbookSection";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 
 
 
@@ -13,7 +13,7 @@ const Ebooks=()=>
     <div>
       <HomeImage/>
       <EbookSection/>
-      <Footer/>
+      {/* <Footer/> */}
    
       
     </div>

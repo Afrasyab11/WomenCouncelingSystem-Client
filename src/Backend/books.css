@@ -1,0 +1,54 @@
+.bok
+{
+    background-color: #CB9F8B;
+	display: flex;
+	align-items: center;
+	
+	flex-direction: column;
+
+    width: 40rem;
+	height: 20rem;
+	
+    margin-left: 22rem;
+    margin-top: 10rem;
+    border-radius: 15px;
+}
+.bhdr
+{
+    color: rgb(255, 254, 254);
+    margin-top: 3rem;
+}
+.Blabel{
+    margin-top: 4rem;
+    
+}
+.Btitle
+{
+    margin-left: 4rem;
+    height: 2rem;
+    padding-left: 1rem;
+   
+}
+.blbl
+{
+    margin-top: 10rem;
+    margin-left: 2rem;
+}
+
+.Bupload
+{
+    margin-left: 2rem;
+    
+}
+.Bkoupld
+{
+    border-radius: 20px;
+	border: 1px solid #E1C7B3;
+	background-color: #E1C7B3;
+	color: #FFFFFF;
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 6px 39px;
+    margin-left: 3rem;
+	margin-top: 2rem;
+}

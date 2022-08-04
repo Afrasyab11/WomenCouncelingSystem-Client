@@ -2,6 +2,8 @@ import React from "react";
 import HomeImage from "./HomeImage";
 import "./Home.css"
 import JobSection from "./JobSection";
+// import Footer from "./Footer";
+
 
 const JobBoard = () => {
 
@@ -10,7 +12,7 @@ const JobBoard = () => {
             <div>
                 <HomeImage />
                 <JobSection />
-              
+               {/* / <Footer/> */}
                
             </div>
         </div>
