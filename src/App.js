@@ -12,9 +12,6 @@ import Admin from './components/Admin';
 import Chat from './components/chat';
 
 
-
-
-
 function App() {
 
   return (
@@ -38,11 +35,6 @@ function App() {
 
       </Routes>
     </>
-
-
-
-
-
   );
 }
 
